@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "atomic-graph": {
+      "command": "uv",
+      "args": ["run", "python", "src/server.py"],
+      "env": {
+        "OPENAI_API_KEY": "${OPENAI_API_KEY}"
+      }
+    }
+  }
+}

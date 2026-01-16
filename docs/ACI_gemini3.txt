@@ -1,0 +1,196 @@
+
+
+https://gemini.google.com/app/cd4ccd8c7c8ce416
+
+
+This is a roadmap to build a **"Headless" Research Engine**. We are skipping the UI entirely.
+
+The goal: Create a local MCP server that allows Claude (or any MCP client) to read, write, and reason over your "Atomic Unit" graph.
+
+### **The Stack (Bleeding Edge & Pythonic)**
+
+* **Language:** Python 3.10+ (Your domain).
+* **Protocol:** `mcp` (The official Model Context Protocol SDK).
+* **Storage (The Brain):** `LanceDB` or `SQLite-vec`.
+* *Why:* You need hybrid search (Vector semantic search + SQL relational filtering) in a single, local file. No Docker containers, no cloud lag.
+
+
+* **Graph Logic:** `NetworkX`.
+* *Why:* For an MVP, keep the graph in memory or serialized. It’s faster and easier for "pathfinding" algorithms than a heavy Neo4j instance.
+
+
+
+---
+
+### **Phase 1: The "Atomic" Data Model (The Schema)**
+
+We must strictly define what an "Atomic Unit" is. It is **NOT** a PDF. It is a **Proposition**.
+
+**`model.py`**
+
+```python
+from pydantic import BaseModel, Field
+from typing import List, Literal, Optional
+from uuid import uuid4
+
+class AtomicUnit(BaseModel):
+    id: str = Field(default_factory=lambda: str(uuid4()))
+    content: str  # The core proposition (e.g., "Attention scales quadratically with sequence length")
+    source_doi: Optional[str] = None
+    confidence: float = 1.0
+    # Vector embedding will be stored separately in LanceDB
+
+class Relation(BaseModel):
+    source_id: str
+    target_id: str
+    type: Literal["supports", "refutes", "extends", "implies", "contradicts"]
+    reasoning: str # Why does A support B?
+
+```
+
+---
+
+### **Phase 2: The Core Logic (The Brain)**
+
+Create a simple controller that manages the storage.
+
+**`graph_engine.py`**
+
+```python
+import lancedb
+import networkx as nx
+
+class KnowledgeGraph:
+    def __init__(self):
+        self.db = lancedb.connect("./data/atomic_graph.lance")
+        self.table = self.db.create_table("units", schema=AtomicUnit, exist_ok=True)
+        self.graph = nx.DiGraph() 
+        # In a real app, you'd load the graph edges from a separate table here.
+
+    def add_proposition(self, content: str, source: str) -> str:
+        # 1. Create Unit
+        unit = AtomicUnit(content=content, source_doi=source)
+        # 2. Embed & Store (Pseudo-code for embedding)
+        # vector = embedding_model.encode(content)
+        self.table.add([unit]) # LanceDB handles ingestion
+        self.graph.add_node(unit.id, content=content)
+        return unit.id
+
+    def connect_concepts(self, id_a: str, id_b: str, relation: str, reasoning: str):
+        self.graph.add_edge(id_a, id_b, relation=relation, reasoning=reasoning)
+        # Persist edge to DB...
+
+    def find_path(self, concept_a: str, concept_b: str):
+        # The "Genius" move: Use vectors to find the node IDs, then graph for the path
+        # This solves the "Vocabulary Mismatch" problem in science.
+        start_node = self.table.search(concept_a).limit(1).to_list()[0]["id"]
+        end_node = self.table.search(concept_b).limit(1).to_list()[0]["id"]
+        
+        try:
+            path = nx.shortest_path(self.graph, start_node, end_node)
+            return self._enrich_path(path) # Fetch content for IDs
+        except nx.NetworkXNoPath:
+            return "No direct lineage found."
+
+```
+
+---
+
+### **Phase 3: The MCP Server (The Nervous System)**
+
+This is where you expose the "Verbs" to Claude. This code runs locally on your machine.
+
+**`server.py`**
+
+```python
+from mcp.server.fastmcp import FastMCP
+from graph_engine import KnowledgeGraph
+
+# Initialize
+mcp = FastMCP("Atomic Graph Researcher")
+kg = KnowledgeGraph()
+
+@mcp.tool()
+def ingest_hypothesis(hypothesis: str, source: str):
+    """
+    Ingests a new scientific claim/hypothesis into the graph. 
+    Use this when the user states a new fact or summarizes a paper.
+    """
+    uid = kg.add_proposition(hypothesis, source)
+    return f"Stored atomic unit {uid}: '{hypothesis}'"
+
+@mcp.tool()
+def find_scientific_lineage(start_concept: str, end_concept: str):
+    """
+    Traces the intellectual dependency path between two concepts.
+    Example: How does 'Semiconductor Physics' lead to 'Transformers'?
+    Returns the chain of atomic units and their relationships.
+    """
+    return kg.find_path(start_concept, end_concept)
+
+@mcp.tool()
+def semantic_collision_check(claim: str):
+    """
+    CRITICAL: Checks if a new claim contradicts existing knowledge.
+    Returns any atomic units that have high semantic similarity but opposing truth values.
+    """
+    # 1. Vector search for similar claims
+    # 2. Check graph for 'refutes' edges on those neighbors
+    # 3. Return potential conflicts
+    return "Analysis: [Placeholder for collision logic]"
+
+if __name__ == "__main__":
+    mcp.run()
+
+```
+
+---
+
+### **Phase 4: The Integration (The "Implant")**
+
+You don't "deploy" this. You configure it.
+
+1. **Locate Config:** Open `~/Library/Application Support/Claude/claude_desktop_config.json` (on macOS).
+2. **Add Your Brain:**
+```json
+{
+  "mcpServers": {
+    "atomic-graph": {
+      "command": "uv",
+      "args": ["run", "python", "/path/to/your/project/server.py"]
+    }
+  }
+}
+
+```
+
+
+3. **Restart Claude.**
+
+---
+
+### **The "Vibe Check" (How to Use It)**
+
+Once installed, you don't look at a dashboard. You just talk to Claude:
+
+> **You:** "I'm reading a new paper that claims *backpropagation is unnecessary for large scale learning*. Check if this conflicts with my established graph."
+> **Claude (Using `semantic_collision_check`):** "Yes. This contradicts Unit #492 ('Backpropagation is the efficient standard for gradient calculation') from your notes on Hinton et al. However, it connects to Unit #103 ('Hebbian Learning') via an 'extends' relationship. This might be a resurgence of local learning rules."
+
+### **The Insanely Genius "Next Step"**
+
+This MVP is passive (it waits for you to ask).
+**The Upgrade:** Make it **Active**. Implement a background "Gardener" agent.
+
+* While you sleep, a script iterates through your graph, finds "Atomic Units" that are isolated (no edges), and uses an LLM to automatically suggest connections or search arXiv for missing links to bridge them.
+* When you wake up, your graph has grown new "synapses" automatically.
+
+**Would you like the code for the "Gardener" script that automatically densifies the graph using the `find_scientific_lineage` logic?**
+
+
+
+
+
+
+
+
+
