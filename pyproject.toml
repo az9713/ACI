@@ -1,7 +1,7 @@
 [project]
-name = "aci-knowledge-graph"
+name = "knowledge-graph-cli"
 version = "0.1.0"
-description = "Agent-Computer-Interaction MCP server for scientific knowledge graph management"
+description = "MCP server for scientific knowledge graph management"
 requires-python = ">=3.10"
 dependencies = [
     "mcp[cli]>=1.0.0",
@@ -14,7 +14,7 @@ dependencies = [
 ]
 
 [project.scripts]
-aci-server = "src.server:main"
+knowledge-graph-server = "src.server:main"
 
 [build-system]
 requires = ["hatchling"]

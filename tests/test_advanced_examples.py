@@ -650,7 +650,7 @@ def run_final_summary():
 def main():
     """Run all advanced examples."""
     print("\n" + "=" * 70)
-    print("  ACI ADVANCED EXAMPLES TEST SUITE")
+    print("  KNOWLEDGE GRAPH CLI ADVANCED EXAMPLES TEST SUITE")
     print("  Demonstrating the Power of Knowledge Graphs")
     print("=" * 70)
     print("\nThis will demonstrate how knowledge graphs can:")

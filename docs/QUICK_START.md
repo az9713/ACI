@@ -1,13 +1,13 @@
 # Quick Start Guide: 12 Hands-On Use Cases
 
-Welcome! This guide will teach you ACI through practical examples. Each use case builds on previous ones, so follow in order for the best experience.
+Welcome! This guide will teach you Knowledge Graph CLI through practical examples. Each use case builds on previous ones, so follow in order for the best experience.
 
 ## Before You Begin
 
 Make sure you have:
-1. ACI installed and configured (see [README](../README.md))
+1. Knowledge Graph CLI installed and configured (see [README](../README.md))
 2. Claude Code or Claude Desktop running
-3. The ACI MCP server added
+3. The MCP server added
 
 Test your setup by asking Claude:
 ```
@@ -288,7 +288,7 @@ You'll see both claims and their conflicting relationship.
 
 ## Use Case 11: Building a Literature Review
 
-**Goal:** Use ACI to organize knowledge for a paper.
+**Goal:** Use Knowledge Graph CLI to organize knowledge for a paper.
 
 **Scenario:** You're writing about attention mechanisms.
 
@@ -368,7 +368,7 @@ You'll see both claims and their conflicting relationship.
 ```
 
 **This demonstrates:**
-How ACI can reveal connections across different fields that might not be obvious.
+How Knowledge Graph CLI can reveal connections across different fields that might not be obvious.
 
 ---
 
@@ -386,7 +386,7 @@ Take a chapter from a textbook. Extract 3-5 key claims. Add them with the book a
 Find a scientific debate (e.g., nature vs. nurture). Add claims from both sides. Mark contradictions.
 
 ### Exercise 4: Concept Genealogy
-Pick a modern technology. Trace its intellectual ancestors. Build the lineage in ACI.
+Pick a modern technology. Trace its intellectual ancestors. Build the lineage in your knowledge graph.
 
 ### Exercise 5: Paper Reading
 Read a research paper. Extract the main claims. Add them with proper attribution. Connect to existing knowledge.
@@ -474,7 +474,7 @@ uv run python tests/test_quick_start.py
 
 **Expected output:**
 ```
-[START] ACI QUICK START TEST SUITE
+[START] KNOWLEDGE GRAPH CLI QUICK START TEST SUITE
 ...
 [END] TEST RESULTS SUMMARY
    UC1: [OK] PASS  Your First Hypothesis

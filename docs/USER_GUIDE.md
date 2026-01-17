@@ -1,10 +1,10 @@
 # User Guide
 
-This guide teaches you how to use ACI (Agent-Computer-Interaction) to build and query a scientific knowledge graph with Claude's help. No programming knowledge is required.
+This guide teaches you how to use Knowledge Graph CLI to build and query a scientific knowledge graph with Claude's help. No programming knowledge is required.
 
 ## Table of Contents
 
-1. [What is ACI?](#what-is-aci)
+1. [What is Knowledge Graph CLI?](#what-is-knowledge-graph-cli)
 2. [Installation](#installation)
 3. [Basic Concepts](#basic-concepts)
 4. [Using the Tools](#using-the-tools)
@@ -17,7 +17,7 @@ This guide teaches you how to use ACI (Agent-Computer-Interaction) to build and 
 
 ---
 
-## What is ACI?
+## What is Knowledge Graph CLI?
 
 ### The Problem
 
@@ -35,7 +35,7 @@ Over time, this knowledge becomes hard to manage:
 
 ### The Solution
 
-ACI gives Claude the ability to:
+Knowledge Graph CLI gives Claude the ability to:
 1. **Store** your scientific claims in a searchable database
 2. **Connect** related ideas with explicit relationships
 3. **Search** by meaning, not just keywords
@@ -88,11 +88,11 @@ Open your terminal (Command Prompt on Windows, Terminal on Mac/Linux) and type:
 pip install uv
 ```
 
-#### Step 3: Get the ACI Code
+#### Step 3: Get the Code
 
 **Option A: Download ZIP**
-1. Download the ACI ZIP file
-2. Extract it to a folder you can find (e.g., `Downloads/ACI`)
+1. Download the ZIP file
+2. Extract it to a folder you can find (e.g., `Downloads/knowledge-graph-cli`)
 
 **Option B: Using git**
 ```
@@ -102,9 +102,9 @@ git clone <repository-url>
 #### Step 4: Install Dependencies
 
 1. Open your terminal
-2. Navigate to the ACI folder:
-   - Windows: `cd C:\Users\YourName\Downloads\ACI`
-   - Mac/Linux: `cd ~/Downloads/ACI`
+2. Navigate to the project folder:
+   - Windows: `cd C:\Users\YourName\Downloads\knowledge-graph-cli`
+   - Mac/Linux: `cd ~/Downloads/knowledge-graph-cli`
 3. Run: `uv sync`
 
 This downloads all the required software. It may take a minute.
@@ -118,7 +118,7 @@ This downloads all the required software. It may take a minute.
 
 #### Step 6: Configure Your API Key
 
-Create a file called `.env` in the ACI folder with this content:
+Create a file called `.env` in the project folder with this content:
 
 ```
 OPENAI_API_KEY=sk-your-key-here
@@ -129,7 +129,7 @@ Replace `sk-your-key-here` with your actual key.
 **Windows (using Notepad):**
 1. Open Notepad
 2. Type: `OPENAI_API_KEY=sk-your-key-here`
-3. Save as `.env` in the ACI folder (choose "All Files" as file type)
+3. Save as `.env` in the project folder (choose "All Files" as file type)
 
 #### Step 7: Connect to Claude Code
 
@@ -195,13 +195,13 @@ Traditional search finds exact words:
 Semantic search finds meaning:
 - Search for "dog" → finds "dog", "puppy", "canine", "pet"
 
-ACI uses semantic search, so you can find related concepts even if they use different words.
+Knowledge Graph CLI uses semantic search, so you can find related concepts even if they use different words.
 
 ---
 
 ## Using the Tools
 
-ACI provides 8 tools that Claude can use. Here's how to use each one:
+Knowledge Graph CLI provides 8 tools that Claude can use. Here's how to use each one:
 
 ### 1. Ingest Hypothesis
 
@@ -617,7 +617,7 @@ A: The MCP server might not be running:
 **Q: I get "OPENAI_API_KEY not set"**
 
 A: Create a `.env` file with your key:
-1. Open the ACI folder
+1. Open the project folder
 2. Create a file named `.env`
 3. Add: `OPENAI_API_KEY=sk-your-key`
 

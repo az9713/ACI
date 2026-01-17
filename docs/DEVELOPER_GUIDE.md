@@ -1,6 +1,6 @@
 # Developer Guide
 
-This guide is for developers who want to understand, modify, or extend the ACI codebase. It assumes you have experience with traditional programming languages (C, C++, Java) but may be new to Python, web development patterns, and AI integration.
+This guide is for developers who want to understand, modify, or extend the Knowledge Graph CLI codebase. It assumes you have experience with traditional programming languages (C, C++, Java) but may be new to Python, web development patterns, and AI integration.
 
 ## Table of Contents
 
@@ -56,7 +56,7 @@ pip install uv
 ```bash
 # Get the code
 git clone <repository-url>
-cd ACI
+cd knowledge-graph-cli
 
 # Install all dependencies
 uv sync
@@ -90,7 +90,7 @@ uv run python -c "from src.server import mcp; print('Setup OK')"
 
 1. Install VS Code
 2. Install Python extension
-3. Open the ACI folder
+3. Open the project folder
 4. VS Code will detect the virtual environment in `.venv/`
 5. Select it as your Python interpreter (bottom-left of VS Code)
 
@@ -474,7 +474,7 @@ valid_relations = ["supports", "refutes", "extends", "implies", "contradicts", "
 
 ### Automated Test Suites
 
-ACI includes comprehensive automated tests that verify all documented functionality:
+Knowledge Graph CLI includes comprehensive automated tests that verify all documented functionality:
 
 ```
 tests/
@@ -494,7 +494,7 @@ uv run python tests/test_advanced_examples.py
 
 **Expected output:**
 ```
-[START] ACI QUICK START TEST SUITE
+[START] KNOWLEDGE GRAPH CLI QUICK START TEST SUITE
 ...
 [END] TEST RESULTS SUMMARY
    UC1: [OK] PASS

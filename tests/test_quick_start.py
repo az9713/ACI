@@ -408,7 +408,7 @@ def run_final_summary():
 def main():
     """Run all use cases from QUICK_START.md"""
     print("\n" + "="*60)
-    print("[START] ACI QUICK START TEST SUITE")
+    print("[START] KNOWLEDGE GRAPH CLI QUICK START TEST SUITE")
     print("="*60)
     print("Running all 12 use cases from QUICK_START.md")
     print("This will create a knowledge graph with scientific claims,")
@@ -461,7 +461,7 @@ def main():
     print(f"\n[SUMMARY] Total: {passed}/{total} use cases passed")
 
     if passed == total:
-        print("\n[SUCCESS] ALL TESTS PASSED! Your ACI installation is working correctly.")
+        print("\n[SUCCESS] ALL TESTS PASSED! Your Knowledge Graph CLI installation is working correctly.")
         return 0
     else:
         print(f"\n[WARN]  {total - passed} test(s) failed. Check the output above for details.")

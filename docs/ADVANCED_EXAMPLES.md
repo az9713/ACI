@@ -1225,7 +1225,7 @@ uv run python tests/test_advanced_examples.py
 
 **Expected output:**
 ```
-[START] ACI ADVANCED EXAMPLES TEST SUITE
+[START] KNOWLEDGE GRAPH CLI ADVANCED EXAMPLES TEST SUITE
 
 Example 1: Hidden Connections...
   Found path: REM Sleep -> Creativity pathway

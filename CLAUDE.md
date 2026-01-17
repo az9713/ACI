@@ -4,7 +4,7 @@ This file provides context and instructions for Claude Code when working with th
 
 ## Project Overview
 
-ACI (Agent-Computer-Interaction) is an MCP server that provides a scientific knowledge graph. It allows AI agents to:
+Knowledge Graph CLI is an MCP server that provides a scientific knowledge graph. It allows AI agents to:
 - Store and retrieve scientific propositions (atomic units)
 - Build relationships between concepts
 - Search semantically across the knowledge base
@@ -23,7 +23,7 @@ ACI (Agent-Computer-Interaction) is an MCP server that provides a scientific kno
 ## Project Structure
 
 ```
-ACI/
+knowledge-graph-cli/
 ├── src/
 │   ├── __init__.py       # Package marker
 │   ├── server.py         # MCP server with 8 tools (entry point)
@@ -141,7 +141,7 @@ The `KnowledgeGraph` is initialized lazily via `get_graph()` to allow environmen
 
 ## Testing
 
-ACI includes two comprehensive test suites:
+Knowledge Graph CLI includes two comprehensive test suites:
 
 ### Quick Start Tests (12 use cases)
 Tests all functionality from the Quick Start guide:

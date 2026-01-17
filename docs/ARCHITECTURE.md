@@ -1,6 +1,6 @@
 # Architecture Overview
 
-This document explains how ACI works at both a high level and in technical detail. It's designed for developers with traditional programming backgrounds (C, C++, Java) who may be new to Python, vector databases, and AI integration.
+This document explains how Knowledge Graph CLI works at both a high level and in technical detail. It's designed for developers with traditional programming backgrounds (C, C++, Java) who may be new to Python, vector databases, and AI integration.
 
 ## Table of Contents
 
@@ -16,7 +16,7 @@ This document explains how ACI works at both a high level and in technical detai
 
 ## Big Picture
 
-### What Problem Does ACI Solve?
+### What Problem Does Knowledge Graph CLI Solve?
 
 When you're researching a topic, you accumulate knowledge from many sources:
 - Research papers
@@ -29,11 +29,11 @@ This knowledge has **relationships**:
 - Your hypothesis contradicts an established claim
 - One idea extends another
 
-ACI provides a structured way to store this knowledge and lets Claude reason over it.
+Knowledge Graph CLI provides a structured way to store this knowledge and lets Claude reason over it.
 
 ### The Architecture in One Sentence
 
-ACI is an **MCP server** that stores scientific claims in a **vector database** (for semantic search) and a **graph database** (for relationship traversal), accessed by Claude through **8 tools**.
+Knowledge Graph CLI is an **MCP server** that stores scientific claims in a **vector database** (for semantic search) and a **graph database** (for relationship traversal), accessed by Claude through **8 tools**.
 
 ### Visual Overview
 
@@ -610,7 +610,7 @@ The architecture separates concerns cleanly:
 
 ### Test Architecture
 
-ACI includes end-to-end tests that validate all documented functionality using real API calls:
+Knowledge Graph CLI includes end-to-end tests that validate all documented functionality using real API calls:
 
 ```
 tests/

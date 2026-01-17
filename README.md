@@ -1,10 +1,10 @@
-# ACI - Agent-Computer-Interaction Knowledge Graph
+# Knowledge Graph CLI
 
 A headless MCP (Model Context Protocol) server that enables AI agents like Claude to read, write, and reason over a knowledge graph of scientific propositions. Think of it as a "second brain" for research that Claude can directly interact with.
 
 ## What Does This Project Do?
 
-ACI allows you to:
+Knowledge Graph CLI allows you to:
 - **Store scientific claims** as atomic units in a searchable knowledge graph
 - **Find relationships** between concepts using semantic (meaning-based) search
 - **Trace intellectual lineages** - how one idea led to another
@@ -32,10 +32,10 @@ Before you begin, you need:
 ```bash
 # If using git:
 git clone <repository-url>
-cd ACI
+cd knowledge-graph-cli
 
 # Or download and extract the ZIP file, then:
-cd path/to/ACI
+cd path/to/knowledge-graph-cli
 ```
 
 ### Step 2: Set Your OpenAI API Key
@@ -111,7 +111,7 @@ Once configured, Claude can use these tools:
 ## Project Structure
 
 ```
-ACI/
+knowledge-graph-cli/
 ├── src/
 │   ├── __init__.py       # Package marker
 │   ├── server.py         # MCP server entry point (8 tools)
@@ -133,7 +133,7 @@ ACI/
 
 ## Testing
 
-ACI includes comprehensive automated tests that verify all documented functionality:
+Knowledge Graph CLI includes comprehensive automated tests that verify all documented functionality:
 
 ```bash
 # Run Quick Start use cases (12 tests)

@@ -1,4 +1,4 @@
-"""Data models for the ACI Knowledge Graph."""
+"""Data models for the Knowledge Graph CLI."""
 
 from datetime import datetime
 from typing import Literal, Optional
