@@ -1,5 +1,9 @@
 .ignore/
 
+# Docs - exclude non-markdown files
+docs/*.txt
+docs/*.mhtml
+
 # Environment
 .env
 
