@@ -1,5 +1,9 @@
 # User Guide
 
+> **Prototype / Experimental**
+>
+> This project is in early development with a raw, command-line interface. Some rough edges are expected.
+
 This guide teaches you how to use Knowledge Graph CLI to build and query a scientific knowledge graph with Claude's help. No programming knowledge is required.
 
 ## Table of Contents

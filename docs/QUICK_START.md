@@ -1,5 +1,9 @@
 # Quick Start Guide: 12 Hands-On Use Cases
 
+> **Prototype / Experimental**
+>
+> This project is in early development with a raw, command-line interface. Some rough edges are expected.
+
 Welcome! This guide will teach you Knowledge Graph CLI through practical examples. Each use case builds on previous ones, so follow in order for the best experience.
 
 ## Before You Begin

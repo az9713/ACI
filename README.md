@@ -1,5 +1,9 @@
 # Knowledge Graph CLI
 
+> **Prototype / Experimental**
+>
+> This project is in early development. The interface is minimal and command-line based - expect a raw, developer-oriented experience rather than a polished user interface. Feedback and contributions welcome!
+
 A headless MCP (Model Context Protocol) server that enables AI agents like Claude to read, write, and reason over a knowledge graph of scientific propositions. Think of it as a "second brain" for research that Claude can directly interact with.
 
 ## What Does This Project Do?
