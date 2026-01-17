@@ -86,14 +86,17 @@ Pydantic models:
 # Install dependencies
 uv sync
 
-# Run the server directly
+# Run the server directly (for debugging)
 uv run python src/server.py
 
 # Test imports
 uv run python -c "from src.server import mcp; print(mcp.name)"
 
-# Add to Claude Code
+# Register MCP server with Claude Code (one-time setup)
 claude mcp add --transport stdio atomic-graph -- uv run python src/server.py
+
+# Start a Claude Code session (run this after registering)
+claude
 ```
 
 ## Architecture Patterns

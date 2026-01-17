@@ -71,7 +71,13 @@ claude mcp add --transport stdio atomic-graph -- uv run python src/server.py
 
 ### Step 5: Start Using!
 
-Open Claude Code and try:
+Start a Claude Code session by running:
+
+```bash
+claude
+```
+
+Then try:
 ```
 "Ingest a hypothesis that transformer attention mechanisms scale quadratically with sequence length"
 ```

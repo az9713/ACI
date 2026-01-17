@@ -133,7 +133,7 @@ Replace `sk-your-key-here` with your actual key.
 
 #### Step 7: Connect to Claude Code
 
-Open Claude Code and run:
+Run this command to register the MCP server (only needed once):
 
 ```
 claude mcp add --transport stdio atomic-graph -- uv run python src/server.py
@@ -141,7 +141,13 @@ claude mcp add --transport stdio atomic-graph -- uv run python src/server.py
 
 #### Step 8: Verify It Works
 
-In Claude Code, type:
+Start a Claude Code session:
+
+```
+claude
+```
+
+Then type:
 
 ```
 List propositions in my knowledge graph

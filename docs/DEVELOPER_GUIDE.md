@@ -548,6 +548,7 @@ from src.server import (
     find_contradictions,
     list_propositions,
     get_unit,
+    delete_unit,
 )
 
 # Each test run starts with clean data

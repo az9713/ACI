@@ -33,7 +33,7 @@ ACI provides a structured way to store this knowledge and lets Claude reason ove
 
 ### The Architecture in One Sentence
 
-ACI is an **MCP server** that stores scientific claims in a **vector database** (for semantic search) and a **graph database** (for relationship traversal), accessed by Claude through **7 tools**.
+ACI is an **MCP server** that stores scientific claims in a **vector database** (for semantic search) and a **graph database** (for relationship traversal), accessed by Claude through **8 tools**.
 
 ### Visual Overview
 
@@ -51,7 +51,7 @@ ACI is an **MCP server** that stores scientific claims in a **vector database** 
 │                                                                     │
 │  ┌─────────────┐  ┌─────────────┐  ┌─────────────┐                 │
 │  │   ingest_   │  │  semantic_  │  │   find_     │                 │
-│  │ hypothesis  │  │   search    │  │ lineage     │  ... 4 more    │
+│  │ hypothesis  │  │   search    │  │ lineage     │  ... 5 more    │
 │  └──────┬──────┘  └──────┬──────┘  └──────┬──────┘                 │
 └─────────┼────────────────┼────────────────┼─────────────────────────┘
           │                │                │
@@ -183,6 +183,7 @@ mcp.run()
 | `find_contradictions` | claim text | conflicts | None (read-only) |
 | `list_propositions` | limit | unit list | None (read-only) |
 | `get_unit` | unit ID | unit details | None (read-only) |
+| `delete_unit` | unit ID, confirm flag | deletion status | Removes unit & relations |
 
 ### 2. Knowledge Graph Engine (`src/graph_engine.py`)
 
@@ -642,7 +643,7 @@ uv run python tests/test_advanced_examples.py
 
 | Test Suite | Tests | What's Verified |
 |------------|-------|-----------------|
-| Quick Start | 12 | All 7 tools, basic workflows |
+| Quick Start | 12 | All 8 tools, basic workflows |
 | Advanced Examples | 8 | Emergent knowledge discovery, cross-domain connections |
 
 **Total: 20 tests covering 100% of documented use cases**
